@@ -1,0 +1,21 @@
+{
+  "name": "kuhvehl-dropdown",
+  "version": "1.0.7",
+  "main": "dist/dropdown.bundle.js",
+  "files": [
+    "dist/",
+    "src/",
+    "styles/"
+  ],
+  "scripts": {
+    "build": "webpack"
+  },
+  "author": "Michael",
+  "license": "MIT",
+  "keywords": [
+    "dropdown",
+    "menu",
+    "javascript",
+    "npm"
+  ]
+}
