@@ -1,11 +1,11 @@
 const path = require("path");
 
 module.exports = {
-  entry: "./src/dropdown.js",
+  entry: "./src/image-carousel.js",
   output: {
-    filename: "dropdown.bundle.js",
+    filename: "image-carousel.bundle.js",
     path: path.resolve(__dirname, "dist"),
-    library: "Dropdown",
+    library: "Image-carousel",
     libraryTarget: "umd",
     globalObject: "this",
   },

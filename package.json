@@ -1,7 +1,7 @@
 {
-  "name": "kuhvehl-dropdown",
-  "version": "1.0.7",
-  "main": "dist/dropdown.bundle.js",
+  "name": "kuhvehl-image-carousel",
+  "version": "1.0.0",
+  "main": "dist/image-carousel.bundle.js",
   "files": [
     "dist/",
     "src/",
@@ -13,9 +13,11 @@
   "author": "Michael",
   "license": "MIT",
   "keywords": [
-    "dropdown",
-    "menu",
+    "image-carousel",
     "javascript",
     "npm"
-  ]
+  ],
+  "devDependencies": {
+    "webpack-cli": "^5.1.4"
+  }
 }
