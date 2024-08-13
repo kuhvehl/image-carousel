@@ -1,50 +1,46 @@
 let slideIndex = 0;
-showSlides(slideIndex);
+let slides = document.querySelectorAll(".slide");
+let dots = document.querySelectorAll(".dot");
+let track = document.querySelector(".carousel-track");
+let totalSlides = slides.length;
+let slideWidth = slides[0].clientWidth;
 let timer;
 
-// Next/previous controls
-function plusSlides(n) {
-  showSlides((slideIndex += n));
-  resetTimer();
-}
+function moveSlides(n) {
+  slideIndex += n;
 
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides((slideIndex = n));
-  resetTimer();
-}
-
-function showSlides(i) {
-  let slides = document.querySelectorAll(".mySlides");
-  let dots = document.querySelectorAll(".dot");
-  slides.forEach((slide) => {
-    slide.style.display = "none";
-  });
-
-  if (i >= slides.length) {
+  if (slideIndex >= totalSlides) {
     slideIndex = 0;
+  } else if (slideIndex < 0) {
+    slideIndex = totalSlides - 1;
   }
 
-  if (i < 0) {
-    slideIndex = slides.length - 1;
-  }
+  updateSlidePosition();
+  updateDots();
+  resetTimer();
+}
 
-  slides[slideIndex].style.display = "block";
-  dots.forEach((dot) => {
-    dot.classList.remove("active");
-  });
+function jumpToSlide(n) {
+  slideIndex = n - 1;
+  updateSlidePosition();
+  updateDots();
+  resetTimer();
+}
 
+function updateSlidePosition() {
+  track.style.transform = `translateX(-${slideIndex * slideWidth}px)`;
+}
+
+function updateDots() {
+  dots.forEach((dot) => dot.classList.remove("active"));
   dots[slideIndex].classList.add("active");
 }
 
 function resetTimer() {
-  clearTimeout(timer); // Clear the existing timer
-  timer = setTimeout(function () {
-    slideIndex++;
-    showSlides(slideIndex);
-    resetTimer(); // Restart the timer for the next slide
-  }, 5000); // Delay for 5 seconds
+  clearTimeout(timer);
+  timer = setTimeout(() => moveSlides(1), 5000);
 }
 
-// Start the initial timer when the page loads
+updateSlidePosition();
+updateDots();
 resetTimer();
